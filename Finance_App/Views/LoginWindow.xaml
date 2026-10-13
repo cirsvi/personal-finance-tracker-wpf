@@ -1,0 +1,170 @@
+﻿<Window x:Class="Finance_App.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finance_App" 
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800"
+        MinWidth="415" MinHeight="550"
+        SizeChanged="Window_SizeChanged"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle  Grid.Column="0"
+            Fill="#567C8D"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Width="100"
+            x:Name="LeftRectangle"/>
+
+
+        <Grid Grid.Column="1" 
+              Margin="20" 
+              MaxWidth="400"
+              x:Name="MiddleForm">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/> <!-- Input fields -->
+                <ColumnDefinition Width="36"/> <!-- Space for icons -->
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> <!-- Login Title -->
+                <RowDefinition Height="Auto"/> <!-- Username Label -->
+                <RowDefinition Height="Auto"/> <!-- Username Input -->
+                <RowDefinition Height="Auto"/> <!-- Username Error -->
+                <RowDefinition Height="Auto"/> <!-- Password Label -->
+                <RowDefinition Height="Auto"/> <!-- Password Input -->
+                <RowDefinition Height="Auto"/> <!-- Password Error -->
+                <RowDefinition Height="Auto"/> <!-- Register -->
+                <RowDefinition Height="Auto"/> <!-- Login Button -->
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                Text="Login"
+                FontFamily="Cascadia Mono"
+                FontSize="40"
+                FontWeight="Bold" 
+                HorizontalAlignment="Center"
+                Margin="0,0,0,20"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0"
+                Foreground="Red"
+                FontFamily="Cascadia Mono"
+                FontSize="12"
+                Margin="0,0,0,15"
+                Visibility="Hidden"
+                x:Name="LoginError"
+                />
+
+            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                Content="Username"
+                Margin="0,0,0,5"
+                FontFamily="Cascadia Mono"
+                FontSize="16"
+                Padding="2"/>
+
+            <TextBox Grid.Row="3" Grid.Column="0"
+                TextWrapping="Wrap"
+                Margin="0,0,0,25"
+                Text=""
+                FontFamily="Cascadia Mono"
+                FontSize="16"
+                Height="30"
+                VerticalContentAlignment="Center"
+                x:Name="UsernameInput"/>
+
+            <Label Grid.Row="4" Grid.Column="0"
+                Content="Password"
+                Margin="0,0,0,5"
+                FontFamily="Cascadia Mono"
+                FontSize="16"
+                Padding="2"/>
+
+
+            <PasswordBox Grid.Row="5" Grid.Column="0"
+                Height="30"
+                FontFamily="Cascadia Mono"
+                FontSize="16"
+                VerticalContentAlignment="Center"
+                Margin="0,0,0,20"
+                x:Name="PasswordInvisible"/>
+
+            <TextBox Grid.Row="5" Grid.Column="0"
+                Height="30"
+                FontFamily="Cascadia Mono"
+                FontSize="16"
+                VerticalContentAlignment="Center"
+                Visibility="Collapsed"
+                Margin="0,0,0,20"
+                x:Name="PasswordVisible"/>
+
+            <Button Grid.Row="5" Grid.Column="1" 
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                Margin="0,5,0,0"
+                VerticalAlignment="Top"
+                Padding="0"
+                Click="TogglePasswordVisibility">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <Viewbox Width="22" Height="22">
+                    <Path x:Name="EyeIcon"
+                  Fill="Gray"
+                  Data="{StaticResource EyeOpenIcon}"/>
+                </Viewbox>
+
+            </Button>
+
+            <TextBlock Grid.Row="6" Grid.Column="0"
+                FontFamily="Cascadia Mono" 
+                HorizontalAlignment="Center"
+                Margin="0,0,0,40" 
+                FontSize="16" 
+                TextWrapping="Wrap">
+                
+                Don't have an account? 
+            <Hyperlink Click="RegisterLink_Click">Register here</Hyperlink>
+                
+            </TextBlock>
+
+            <Button Grid.Row="7" Grid.Column="0"
+                Content="Login"
+                Style="{StaticResource TealButtonStyle}"
+                x:Name="LoginButton"
+                Click="LoginButton_Click"/>
+        </Grid>
+
+        <Rectangle Grid.Column="2" 
+            Fill="#567C8D" 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Stretch"
+            Width="100"
+            x:Name="RightRectangle"/>
+
+    </Grid>
+</Window>

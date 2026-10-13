@@ -1,0 +1,80 @@
+﻿<Window x:Class="Finance_App.ExpensesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finance_App"
+        xmlns:controls="clr-namespace:Finance_App.Controls"
+        mc:Ignorable="d"
+        Title="ExpensesView" Height="550" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/CrudButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Header x:Name="HeaderControl" Grid.Row="0"/>
+
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Expenses"
+                FontFamily="Cascadia Mono"
+                FontSize="26"
+                FontWeight="Bold"
+                VerticalAlignment="Center"/>
+
+            <StackPanel Grid.Column="1"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+
+                <Button Content="Add Expense"
+                        Margin="5"
+                        Style="{StaticResource AddButton}"
+                        Click="AddExpense_Click"/>
+
+                <Button Content="Edit Selected" 
+                        Margin="5"
+                        Style="{StaticResource EditButton}" 
+                        Click="EditExpense_Click"/>
+                
+                <Button Content="Delete Selected" 
+                        Margin="5"
+                        Style="{StaticResource DeleteButton}" 
+                        Click="DeleteExpense_Click"/>
+
+            </StackPanel>
+        </Grid>
+
+        <DataGrid Grid.Row="2"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            FontFamily="Cascadia Mono"
+            FontSize="16"
+            Margin="10"
+            x:Name="ExpensesGrid">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" Width="*" />
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
+                <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="*"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Window>

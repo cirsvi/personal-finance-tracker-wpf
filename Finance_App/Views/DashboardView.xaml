@@ -1,0 +1,139 @@
+﻿<Window x:Class="Finance_App.DashboardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finance_App"
+        xmlns:controls="clr-namespace:Finance_App.Controls"
+        mc:Ignorable="d"
+        Title="DashboardView" Height="550" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Header x:Name="HeaderControl" Grid.Row="0"/>
+
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+            Text="Dashboard"
+            FontFamily="Cascadia Mono"
+            FontSize="26"
+            FontWeight="Bold"
+            Margin="0,0,0,20"/>
+
+            <Grid Grid.Row="1" Margin="0,0,0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Border Grid.Column="0" 
+                    Background="#DFF5EA"
+                    CornerRadius="8"
+                    Padding="15"
+                    Margin="5">
+                    
+                    <StackPanel>
+                        <TextBlock Text="Total Income:" 
+                            FontSize="16"
+                            FontFamily="Cascadia Mono"/>
+
+                        <Separator Margin="0,6"
+                           Height="3"
+                           Background="#9ACFB8"
+                           Opacity="0.7"/>
+
+                        <TextBlock FontSize="22"
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="Green"
+                            x:Name="TotalIncomeText"
+                            FontFamily="Cascadia Mono"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" 
+                    Background="#FDECEC"
+                    CornerRadius="8"
+                    Padding="15"
+                    Margin="5">
+                    
+                    <StackPanel>
+                        <TextBlock Text="Total Expenses:" 
+                            FontSize="16"
+                            FontFamily="Cascadia Mono"/>
+
+                        <Separator Margin="0,6"
+                           Height="3"
+                           Background="#E57373"
+                           Opacity="0.5"/>
+
+                        <TextBlock FontSize="22"
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="DarkRed"
+                            x:Name="TotalExpensesText"
+                            FontFamily="Cascadia Mono"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" 
+                    Background="#EEF2FF"
+                    CornerRadius="8"
+                    Padding="15"
+                    Margin="5">
+                    
+                    <StackPanel>
+                        <TextBlock Text="Balance:"
+                            FontSize="16"
+                            FontFamily="Cascadia Mono"/>
+
+                        <Separator Margin="0,6"
+                           Height="3"
+                           Background="#7986CB"
+                           Opacity="0.5"/>      
+
+                        <TextBlock FontSize="22"
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"
+                            x:Name="BalanceText"
+                            FontFamily="Cascadia Mono"
+                        />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <GroupBox Grid.Row="2" 
+                Header="Recent Expenses:" 
+                FontFamily="Cascadia Mono" 
+                FontSize="16">
+                
+                <DataGrid IsReadOnly="True"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="Column"
+                    Margin="5"
+                    x:Name="RecentExpensesGrid">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" Width="*"/>
+                        <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*"/>
+                        <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

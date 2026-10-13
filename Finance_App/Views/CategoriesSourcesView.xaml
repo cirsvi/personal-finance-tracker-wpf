@@ -1,0 +1,113 @@
+﻿<Window x:Class="Finance_App.CategoriesSourcesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finance_App"
+        xmlns:controls="clr-namespace:Finance_App.Controls"
+        mc:Ignorable="d"
+        Title="CategoriesSourcesView" Height="550" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/CrudButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Header x:Name="HeaderControl" Grid.Row="0"/>
+
+        <TabControl Grid.Row="1" Margin="20">
+            <TabItem FontFamily="Cascadia Mono" FontSize="20" Header="Expense Categories">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid Grid.Row="0"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        Margin="0,0,0,10"
+                        FontFamily="Cascadia Mono"
+                        FontSize="16"
+                        x:Name="CategoriesGrid">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding CategoryName}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                        <Button Content="Add Category"
+                            Style="{StaticResource AddButton}"
+                            Margin="5"
+                            Click="AddCategory_Click"/>
+                        <Button Content="Edit Selected"
+                            Style="{StaticResource EditButton}"
+                            Margin="5"
+                            Click="EditCategory_Click"/>
+                        <Button Content="Delete Selected"
+                            Style="{StaticResource DeleteButton}"    
+                            Margin="5"
+                            Click="DeleteCategory_Click"/>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            
+            <TabItem FontFamily="Cascadia Mono" FontSize="20" Header="Income Sources">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid Grid.Row="0"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        Margin="0,0,0,10"
+                        FontFamily="Cascadia Mono"
+                        FontSize="16"
+                        x:Name="SourcesGrid">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding SourceName}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                        <Button Content="Add Source"
+                            Style="{StaticResource AddButton}"
+                            Margin="5"
+                            Click="AddSource_Click"/>
+                        <Button Content="Edit Selected"
+                            Style="{StaticResource EditButton}"
+                            Margin="5"
+                            Click="EditSource_Click"/>
+                        <Button Content="Delete Selected"
+                            Style="{StaticResource DeleteButton}"
+                            Margin="5"
+                            Click="DeleteSource_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+
+       
+    </Grid>
+</Window>

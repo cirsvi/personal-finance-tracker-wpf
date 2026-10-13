@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+
+**/.vs/
+*.user
+*.suo
+
+**/packages/
+*.nupkg
+
+_ReSharper*/
+*.DotSettings.user
+
+Thumbs.db
+Desktop.ini
+.DS_Store

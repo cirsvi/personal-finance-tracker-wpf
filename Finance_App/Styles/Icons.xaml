@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Eye Open Icon -->
+    <Geometry x:Key="EyeOpenIcon">
+        M1,9 C3,4 7,1 12,1 17,1 21,4 23,9 21,14 17,17 12,17 7,17 3,14 1,9 Z
+        M12,5 A4,4 0 1 0 12,13 A4,4 0 1 0 12,5 Z
+    </Geometry>
+
+    <!-- Eye Closed Icon -->
+    <Geometry x:Key="EyeClosedIcon">
+        M1,9 C3,4 7,1 12,1 17,1 21,4 23,9 21,14 17,17 12,17 7,17 3,14 1,9 Z
+        M3,3 L21,15
+    </Geometry>
+</ResourceDictionary>

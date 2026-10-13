@@ -1,0 +1,75 @@
+﻿<Window x:Class="Finance_App.SourceAddEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finance_App"
+        mc:Ignorable="d"
+        SizeToContent="Height"
+        Title="SourceAddEditView" Width="400"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/CrudButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/ErrorStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="22"
+            FontWeight="Bold"
+            FontFamily="Cascadia Mono"
+            Margin="0,0,0,15"
+            x:Name="TitleText"/>
+
+        <TextBlock Grid.Row="1"
+            Text="Source Name/Title:"
+            FontFamily="Cascadia Mono"
+            FontSize="16"
+            Margin="0,5"/>
+        <TextBox Grid.Row="2"
+            FontFamily="Cascadia Mono"
+            FontSize="16"
+            Height="30"
+            VerticalContentAlignment="Center"
+            Margin="0,0,0,10"
+            x:Name="SourceNameBox"/>
+        <TextBlock Grid.Row="3" Grid.Column="0"
+            Style="{StaticResource ErrorTextBlockStyle}"
+            x:Name="SourceNameError"/>
+
+        
+        <StackPanel Grid.Row="4"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            Margin="0,15,0,0">
+
+            <Button Content="Cancel"
+            Width="80"
+            Margin="5"
+            Style="{StaticResource TealButtonStyle}"
+            FontSize="14"
+            Height="32"
+            Click="Cancel_Click"/>
+
+            <Button x:Name="SaveButton"
+            Content="Save"
+            Width="80"
+            Margin="5"
+            Style="{StaticResource AddButton}"
+            Click="Save_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
